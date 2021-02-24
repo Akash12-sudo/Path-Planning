@@ -1,0 +1,146 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.002780814042022824 -0.8258690187538292 -0.5638551506689027 3.1442473410841756
+  position -0.18423503249702788 4.850421298319307 -2.004205765076053
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 3.5 2.5
+  floorAppearance Parquetry {
+    type "chequered"
+    colorOverride 1 1 0.498039
+  }
+  wallThickness 0.04
+}
+DEF Blocks Solid {
+  translation -1 0.14 -0.01
+  children [
+    DEF Shape Shape {
+      appearance DEF Appear PBRAppearance {
+        baseColor 0.388235 0.317647 0.294118
+        roughness 1
+        metalness 0.5
+      }
+      geometry Box {
+        size 0.5 0.25 1.5
+      }
+    }
+  ]
+  boundingObject USE Shape
+}
+Solid {
+  translation -0.5 0.14 -0.5
+  children [
+    Shape {
+      appearance USE Appear
+      geometry Box {
+        size 0.5 0.25 1.5
+      }
+    }
+  ]
+  name "solid(1)"
+  boundingObject USE Shape
+}
+Solid {
+  translation 1 0.14 0.5
+  children [
+    DEF Tile Shape {
+      appearance USE Appear
+      geometry Box {
+        size 0.5 0.25 0.5
+      }
+    }
+  ]
+  name "solid(2)"
+  boundingObject USE Tile
+}
+Solid {
+  translation 1 0.14 -0.5
+  children [
+    USE Tile
+  ]
+  name "solid(7)"
+  boundingObject USE Tile
+}
+Solid {
+  translation 0.5 0.14 1
+  children [
+    USE Tile
+  ]
+  name "solid(3)"
+  boundingObject USE Tile
+}
+Solid {
+  translation 0 0.14 -0.5
+  children [
+    Shape {
+      appearance USE Appear
+      geometry Box {
+        size 0.5 0.25 0.5
+      }
+    }
+  ]
+  name "solid(4)"
+  boundingObject Box {
+    size 1 0.25 0.5
+  }
+}
+Solid {
+  translation -1.5 0 -1
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.635294 1 0.160784
+        roughness 1
+      }
+      geometry Box {
+        size 0.5 0.001 0.5
+      }
+    }
+  ]
+  name "solid(5)"
+}
+Solid {
+  translation 1.5 0 1
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.945098 0 0
+        roughness 1
+        metalness 0.5
+      }
+      geometry Box {
+        size 0.5 0.001 0.5
+      }
+    }
+  ]
+  name "solid(6)"
+}
+Solid {
+  translation 0 0.14 1
+  children [
+    USE Tile
+  ]
+  name "solid(8)"
+}
+E-puck {
+  hidden position_0_0 2328.3603856832606
+  hidden position_0_1 2357.1387141883188
+  hidden linearVelocity_0 0.09962575362465453 -5.6202286061950605e-06 -0.0005684822400908547
+  hidden angularVelocity_0 0.007789335380435058 0.009785164106613238 -0.0004866408548315382
+  hidden rotation_1 -1 0 0 1.5209138360273493
+  hidden linearVelocity_1 0.0999793389057234 -0.00013325925495644535 -0.00016090955686312347
+  hidden angularVelocity_1 -0.03431570646898819 -0.008632075021794137 -5.000299752246217
+  hidden rotation_2 -1 0 0 5.165362481638932
+  hidden linearVelocity_2 0.10003809403567765 -5.144675350015925e-05 -0.0008986396793339566
+  hidden angularVelocity_2 -0.04477524804561746 0.023529166653355197 -5.000254462411446
+  translation -0.48745450998481177 -0.00011329610791459624 0.6416334336495939
+  rotation 0.0002948176335022393 0.9999998983938381 -0.0003410203458709155 -1.5634370452889366
+  controller "Fire"
+}
