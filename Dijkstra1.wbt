@@ -1,0 +1,67 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.9999803566017101 -0.006208742904599051 0.0008590240167411231 1.4143867606160905
+  position -0.1471248908850589 1.7164970244048028 0.29582890052497673
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  castShadows FALSE
+}
+RectangleArena {
+  floorTileSize 1 1
+  floorAppearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "C:/Users/HP/Downloads/Robotics.jpg"
+      ]
+    }
+    roughness 1
+    roughnessMap ImageTexture {
+      url [
+        "textures/parquetry/chequered_parquetry_roughness.jpg"
+      ]
+    }
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "textures/parquetry/chequered_parquetry_normal.jpg"
+      ]
+    }
+    occlusionMap ImageTexture {
+      url [
+        "textures/parquetry/chequered_parquetry_occlusion.jpg"
+      ]
+    }
+  }
+  wallHeight 0.02
+}
+E-puck {
+  translation -0.4 0 0.3875
+  rotation 0 1 0 -1.57
+  controller "Dijkstra"
+  groundSensorsSlot [
+    DistanceSensor {
+      translation 0 0.015 0
+      name "ir_right1"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0 -0.015 0
+      name "ir_left1"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0 0.025 0
+      name "ir_right"
+    }
+    DistanceSensor {
+      translation 0 -0.025 0
+      name "ir_left"
+      type "infra-red"
+    }
+  ]
+}
