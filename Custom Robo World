@@ -1,0 +1,196 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation 0.0025760808193368537 0.8997681461283571 0.4363606845493207 3.1382598823635792
+  position 0.005956563645523272 1.126683902897943 -0.9711621867091794
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  castShadows FALSE
+}
+RectangleArena {
+  floorTileSize 1 1
+  floorAppearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "C:/Users/HP/Downloads/Robotics (1).jpg"
+      ]
+    }
+    roughness 1
+    roughnessMap ImageTexture {
+      url [
+        "textures/parquetry/chequered_parquetry_roughness.jpg"
+      ]
+    }
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "textures/parquetry/chequered_parquetry_normal.jpg"
+      ]
+    }
+    occlusionMap ImageTexture {
+      url [
+        "textures/parquetry/chequered_parquetry_occlusion.jpg"
+      ]
+    }
+  }
+}
+Robot {
+  translation -0.3999999524896883 -0.00021904061553098403 0.38750000342524055
+  rotation -0.002774444252469425 0.9999923049548423 0.002773533881530023 1.5700078848170855
+  children [
+    DistanceSensor {
+      translation -0.025 0.005 0.045
+      rotation 0 0 1 -1.57
+      children [
+        DEF sensor Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.866667 0.0980392
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ir_left"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.011 0.005 0.045
+      rotation 0 0 1 -1.57
+      children [
+        USE sensor
+      ]
+      name "ir_left1"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.025 0.005 0.045
+      rotation 0 0 1 -1.57
+      children [
+        USE sensor
+      ]
+      name "ir_right"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.011 0.005 0.045
+      rotation 0 0 1 -1.57
+      children [
+        USE sensor
+      ]
+      name "ir_right1"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0 0.005 0.045
+      rotation 0 0 1 -1.57
+      children [
+        USE sensor
+      ]
+      name "ir_centre"
+    }
+    DEF Body Transform {
+      translation 0 0.0415 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0.137255
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 112.47922193131309
+        anchor 0.045 0.025 0
+      }
+      device [
+        RotationalMotor {
+          name "motor_1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.045 0.025 0
+        rotation -0.29120954434635216 0.29097773866754656 0.911333614480181 1.6627165237806294
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0.827451 0.0235294 0.0627451
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE wheel
+        physics DEF wheel_physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 139.70095335478922
+        anchor -0.045 0.025 0
+      }
+      device [
+        RotationalMotor {
+          name "motor_2"
+        }
+      ]
+      endPoint Solid {
+        translation -0.045 0.025 0
+        rotation 0.5574445686508233 -0.5570008372582865 0.6156343234220015 2.037209350042738
+        children [
+          USE wheel
+        ]
+        name "solid(1)"
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+    Solid {
+      translation 0 0.07 0.045
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.666667 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "solid(2)"
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+  }
+  controller "dijkstra3"
+}
